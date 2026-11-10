@@ -1,0 +1,26 @@
+id: C-011
+title: Path gap fixed, add parts/g.txt and manifest.txt
+type: normal
+supersedes: [C-007]
+goal: |
+  Create parts/g.txt with exactly one line: g
+  Also create manifest.txt in the repo root with exactly one line: parts/g.txt
+inputs: []
+after: [C-001]
+provides:
+  - parts/g.txt
+  - manifest.txt
+read:
+  - hello.txt
+allowed_paths:
+  - parts/g.txt
+  - manifest.txt
+outputs:
+  - parts/g.txt
+  - manifest.txt
+acceptance:
+  - cmd: "test -f parts/g.txt"
+  - cmd: "grep -qx g parts/g.txt"
+  - cmd: "grep -qx parts/g.txt manifest.txt"
+notes: |
+  Supersedes C-007, whose allowed_paths omitted manifest.txt.
