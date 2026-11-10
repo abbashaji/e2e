@@ -1,0 +1,20 @@
+id: C-002
+title: Parallel cell, add parts/a.txt
+type: normal
+goal: |
+  Create parts/a.txt with exactly one line: a
+inputs: []
+after: [C-001]
+provides:
+  - parts/a.txt
+read:
+  - hello.txt
+allowed_paths:
+  - parts/a.txt
+outputs:
+  - parts/a.txt
+acceptance:
+  - cmd: "test -f parts/a.txt"
+  - cmd: "grep -qx a parts/a.txt"
+notes: |
+  Scenario 2: three cells (C-002, C-008, C-009) are ready together after C-001. Use Run ready with several cells, or run each. The second and third merges meet a moved main: auto sync must not look like a takeover.

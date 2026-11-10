@@ -1,0 +1,26 @@
+id: C-010
+title: Integration, add RESULT.txt
+type: integration
+goal: |
+  Create RESULT.txt in the repo root with exactly one line: all-good
+  It proves that the happy chain, the parallel cells, the replaced cell and the dependent cell all merged.
+inputs: []
+after: [C-002, C-005, C-008, C-009]
+provides:
+  - RESULT.txt
+read:
+  - parts/a.txt
+allowed_paths:
+  - RESULT.txt
+outputs:
+  - RESULT.txt
+acceptance:
+  - cmd: "test -f RESULT.txt"
+  - cmd: "grep -qx all-good RESULT.txt"
+  - cmd: "test -f parts/a.txt"
+  - cmd: "test -f parts/b.txt"
+  - cmd: "test -f parts/c.txt"
+  - cmd: "test -f parts/d.txt"
+  - cmd: "test -f parts/e.txt"
+notes: |
+  Scenario 8: last cell. Everything above must be merged first.

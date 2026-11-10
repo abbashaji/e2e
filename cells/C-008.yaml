@@ -1,0 +1,20 @@
+id: C-008
+title: Parallel cell, add parts/b.txt
+type: normal
+goal: |
+  Create parts/b.txt with exactly one line: b
+inputs: []
+after: [C-001]
+provides:
+  - parts/b.txt
+read:
+  - hello.txt
+allowed_paths:
+  - parts/b.txt
+outputs:
+  - parts/b.txt
+acceptance:
+  - cmd: "test -f parts/b.txt"
+  - cmd: "grep -qx b parts/b.txt"
+notes: |
+  Parallel cell, see C-002.

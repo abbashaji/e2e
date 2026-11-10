@@ -1,0 +1,22 @@
+id: C-007
+title: Path gap cell, add parts/g.txt and manifest.txt
+type: normal
+goal: |
+  Create parts/g.txt with exactly one line: g
+  Also create manifest.txt in the repo root with exactly one line: parts/g.txt
+inputs: []
+after: [C-001]
+provides:
+  - parts/g.txt
+read:
+  - hello.txt
+allowed_paths:
+  - parts/g.txt
+outputs:
+  - parts/g.txt
+acceptance:
+  - cmd: "test -f parts/g.txt"
+  - cmd: "grep -qx g parts/g.txt"
+  - cmd: "grep -qx parts/g.txt manifest.txt"
+notes: |
+  Scenario 6: deliberate gap, manifest.txt is outside allowed_paths. Expected: cell_help names the class outside_cell, not own_bug. Needs the Steward, scenario 7.

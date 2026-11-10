@@ -1,0 +1,27 @@
+id: C-005
+title: Dependent cell, add parts/e.txt
+type: normal
+goal: |
+  Create parts/e.txt with exactly one line: e
+  parts/d.txt is created by the replacement C-004.
+inputs:
+  - from: C-003
+    kind: implementation
+    contract: |
+      File parts/d.txt exists once the cell it replaces is merged. Line content: d.
+after: []
+provides:
+  - parts/e.txt
+read:
+  - parts/d.txt
+allowed_paths:
+  - parts/e.txt
+outputs:
+  - parts/e.txt
+acceptance:
+  - cmd: "test -f parts/e.txt"
+  - cmd: "grep -qx e parts/e.txt"
+  - cmd: "test -f parts/d.txt"
+  - cmd: "grep -qx d parts/d.txt"
+notes: |
+  Scenario 4 (gate fix, PR 65): depends on the replaced C-003. Expected: becomes ready after C-004 merges and its CI gate passes. Before the fix the gate failed with a stale dependency.

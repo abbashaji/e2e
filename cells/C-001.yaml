@@ -1,0 +1,21 @@
+id: C-001
+title: Skeleton, add hello.txt
+type: skeleton
+lease_minutes: 15
+goal: |
+  Create hello.txt in the repo root with exactly one line: hello
+  Nothing else.
+inputs: []
+after: []
+provides:
+  - hello.txt
+read: []
+allowed_paths:
+  - hello.txt
+outputs:
+  - hello.txt
+acceptance:
+  - cmd: "test -f hello.txt"
+  - cmd: "grep -qx hello hello.txt"
+notes: |
+  Happy path. Scenario 1: claim, commit, submit, CI merge.

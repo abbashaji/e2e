@@ -1,0 +1,19 @@
+id: C-003
+title: Original cell, add parts/d.txt wrongly
+type: normal
+goal: |
+  Create parts/d.txt with exactly one line: wrong
+inputs: []
+after: [C-001]
+provides:
+  - parts/d.txt
+read: []
+allowed_paths:
+  - parts/d.txt
+outputs:
+  - parts/d.txt
+acceptance:
+  - cmd: "test -f parts/d.txt"
+  - cmd: "grep -qx wrong parts/d.txt"
+notes: |
+  Scenario 3: this cell is replaced by C-004 and must NEVER be run. The panel must show it as replaced, not as waiting or ready. If it appears as ready, do not run it, that is a finding.

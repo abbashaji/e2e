@@ -1,0 +1,21 @@
+id: C-004
+title: Replacement cell, add parts/d.txt
+type: normal
+goal: |
+  Create parts/d.txt with exactly one line: d
+  This cell replaces C-003.
+inputs: []
+after: [C-001]
+supersedes: [C-003]
+provides:
+  - parts/d.txt
+read: []
+allowed_paths:
+  - parts/d.txt
+outputs:
+  - parts/d.txt
+acceptance:
+  - cmd: "test -f parts/d.txt"
+  - cmd: "grep -qx d parts/d.txt"
+notes: |
+  Scenario 3: replaces C-003. Run this one.

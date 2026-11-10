@@ -1,0 +1,20 @@
+id: C-006
+title: Spec gap cell, add parts/f.txt
+type: normal
+goal: |
+  Create parts/f.txt with exactly one line. The line must follow the line format defined by the contract of the cell this one reads from.
+inputs: []
+after: [C-001]
+provides:
+  - parts/f.txt
+read:
+  - hello.txt
+allowed_paths:
+  - parts/f.txt
+outputs:
+  - parts/f.txt
+acceptance:
+  - cmd: "test -f parts/f.txt"
+  - cmd: "grep -qx f parts/f.txt"
+notes: |
+  Scenario 5: deliberate gap, no contract is listed. Expected: the chat reports it (cell_help or cell_note) and does not guess. Needs the Steward, scenario 7.
